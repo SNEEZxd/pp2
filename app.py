@@ -19,16 +19,16 @@ def about():
 def products():
     return render_template('products.html')
 
-@app.route('/review', methods=['GET'])
+@app.route('/review', methods=['GET','POST'])
 def reviews():
-    return render_template('reviews.html')
-
-@app.route('/api/review', methods=['POST'])     
-def review():
-    product_id = request.form["product_id"]
-    error_message = 'Product not found'
+    if request.method == 'GET':
+        return render_template('reviews.html')
     
-    return redirect(f'https://www.ceneo.pl/{product_id}#reviews')
+    if request.method == 'POST':
+        product_id = request.form["product_id"]
+        return redirect(f'https://www.ceneo.pl/{product_id}#reviews')
+        
+
         
 if __name__ == '__main__':
     app.run(debug=True)
