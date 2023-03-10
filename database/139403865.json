@@ -1,0 +1,32 @@
+{
+    "product_id": "139403865",
+    "product_name": "Epson EH-TW6250",
+    "product_image": "https://image.ceneostatic.pl/data/products/139403865/i-epson-eh-tw6250.jpg",
+    "product_reviews_count": 2,
+    "reviews": [
+        {
+            "user": "b...g",
+            "review_date": "2023-02-01 21:22:53",
+            "review_score": 5.0,
+            "review_text": "Pożądny sprzęt. Super cena do jakości",
+            "vote_up_count": "0",
+            "vote_down_count": "0",
+            "purchase_date": "2023-02-01 21:22:53",
+            "advantages_count": 3,
+            "disadvantages_count": 0,
+            "is_recommend": true
+        },
+        {
+            "user": "b...r",
+            "review_date": "2023-02-02 19:29:55",
+            "review_score": 5.0,
+            "review_text": "Po pierwszym dniu - super! :-)",
+            "vote_up_count": "0",
+            "vote_down_count": "0",
+            "purchase_date": "2023-02-02 19:29:55",
+            "advantages_count": 0,
+            "disadvantages_count": 0,
+            "is_recommend": true
+        }
+    ]
+}
