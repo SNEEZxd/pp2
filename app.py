@@ -19,19 +19,16 @@ def product():
     
     if request.method == 'POST':
         product_id = request.form["product_id"]
-        
         if product_id == "":
             return render_template('getProduct.html',error = "Product does not exist")
-        product_data = ceneo_craper.check_database(product_id)
-        if product_data != {}:
+        
+        if ceneo_craper.check_product_id(product_id):
+            
+            ceneo_craper.get_product_data()
+            product_data = ceneo_craper.get_reviews()
             return render_template('product.html',product_data = product_data)
         else:
-            if ceneo_craper.check_product_id(product_id):
-                ceneo_craper.get_product_data()
-                product_data = ceneo_craper.get_reviews()
-                return render_template('product.html',product_data = product_data)
-            else:
-                return render_template('getProduct.html',error = "Product does not exist")
+            return render_template('getProduct.html',error = "Product does not exist")
         
 @app.route('/products', methods=['GET','POST'])
 def products():
