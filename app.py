@@ -1,10 +1,7 @@
 from flask import Flask, render_template,redirect,request
-import requests
-import pymongo
-from bs4 import BeautifulSoup
-client = pymongo.MongoClient("mongodb+srv://DevKarol:gQiTucOEC4Vy9lYe@pp2.axkdroq.mongodb.net/?retryWrites=true&w=majority")
-db = client.ceneo["reviews"]
+from scraper import CeneoScraper
 
+ceneo_craper = CeneoScraper()
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,21 +12,35 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/products')
-def products():
-    return render_template('products.html')
-
-@app.route('/review', methods=['GET','POST'])
-def reviews():
+@app.route('/product', methods=['GET','POST'])
+def product():
     if request.method == 'GET':
-        return render_template('reviews.html')
+        return render_template('getProduct.html')
     
     if request.method == 'POST':
         product_id = request.form["product_id"]
-        return redirect(f'https://www.ceneo.pl/{product_id}#reviews')
+        if product_id == "":
+            return render_template('getProduct.html',error = "Product does not exist")
         
+        if ceneo_craper.check_product_id(product_id):
+            
+            ceneo_craper.get_product_data()
+            product_data = ceneo_craper.get_reviews()
+            return render_template('product.html',product_data = product_data)
+        else:
+            return render_template('getProduct.html',error = "Product does not exist")
+        
+@app.route('/products', methods=['GET','POST'])
+def products():
+    if request.method == 'GET':
+        return render_template('products.html')
 
-        
+@app.route('/product/charts/', methods=['GET','POST'])
+def charts():
+    if request.method == 'GET':
+        return render_template('products.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     

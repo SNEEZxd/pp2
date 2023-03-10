@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ceneo reviews</title>
+</head>
+
+<body>
+  <h1>{{product_data.product_name}}</h1>
+    <img src="{{product_data.product_image}}" alt="{{product_data.product_name}}">
+    <table>
+      <tr>
+        <th>Product ID:</th>
+        <td>{{product_data.product_id}}</td>
+      </tr>
+      <tr>
+        <th>Reviews Count:</th>
+        <td>{{product_data.product_reviews_count}}</td>
+      </tr>
+    </table>
+  <div class="container">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="/" class="nav-link" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/about" class="nav-link">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a href="/product" class="nav-link active">Get product reviews</a>
+        </li>
+        <li class="nav-item">
+          <a href="products" class="nav-link ">Products List</a>
+        </li>
+      </ul>
+    </header>
+  </div>
+
+  <main>
+    <div class="container mt-5 mb-3">
+      <div class="row">
+        <table id="example" class="display nowrap">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Review date</th>
+              <th>Review date</th>
+              <th>Review text</th>
+              <th>Vote up count</th>
+              <th>Vote down count</th>
+              <th>Purchase date</th>
+              <th>Advantagest</th>
+              <th>Disadvantages </th>
+              <th>Recommend</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product_review in product_data.reviews %}
+
+            <tr id="tr-id-2" class="tr-class-2">
+              <td>{{product_review.user}}</td>
+              <td>{{product_review.review_date}}</td>
+              <td>{{product_review.review_score}}</td>
+              <td>{{product_review.review_text}}</td>
+              <td>{{product_review.vote_up_count}}</td>
+              <td>{{product_review.vote_down_count}}</td>
+              <td>{{product_review.purchase_date}}</td>
+              <td>{{product_review.advantages_count}}</td>
+              <td>{{product_review.disadvantages_count}}</td>
+              <td>{{product_review.is_recommend}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+        {% if not product_data.reviews|length == 0 %}
+
+        <div class="col-12">
+          <div class="alert alert-primary" role="alert">
+            Brak opinii dla tego produktu.
+          </div>
+
+          {% else %}
+
+          <div class="row mt-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <a download class="btn btn-primary" href="{{url_for('database', filename=product_id+'.json')}}">Download</a>
+
+            </div>
+            <div class="col md-6"></div>
+            <div class="col-md-2">
+              <a class="btn btn-warning" href="/product/charts/{{ product_id }}">Statistics</a>
+            </div>
+          </div>
+
+
+
+          {% endif %}
+
+
+        </div>
+      </div>
+  </main>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#example').DataTable({
+        "scrollX": true
+      });
+    });
+
+  </script>
+
+
+</body>
+
+</html>
