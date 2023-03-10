@@ -25,7 +25,18 @@ class CeneoScraper:
             return False 
         else:
             return True
+    def check_database(self,product_id):
+        dir_files = os.listdir('database')
         
+        if len(dir_files) > 0:
+            for file in dir_files:
+                if product_id in str(file):
+                    with open('database/' + file, encoding='utf-8') as f:
+                        data = json.load(f)
+                    return data
+            return {}
+        else:       
+            return {}      
     def get_product_data(self):
         response = requests.get("https://www.ceneo.pl/" + self.product_id + "#tab=reviews")
         soup = BeautifulSoup(response.text, 'lxml')
@@ -84,7 +95,6 @@ class CeneoScraper:
                                "advantages_count": advantages_count,
                                "disadvantages_count": disadvantages_count,
                                "is_recommend": is_recommend}
-                
                 self.product_reviews.append_to_reviews(review_data)
 
             page_id += 1
