@@ -39,7 +39,7 @@ def products():
         product = Product('')
         products = product.get_scrapped_products()
         if products == []:
-            return render_template('products.html',error = "First scrap some products!")
+            return render_template('products.html',error = "Firstly extract reviews!")
         else:
             return render_template('products.html',products = products)
             

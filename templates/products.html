@@ -73,6 +73,21 @@
       margin-right: 10%;
       display: block;
     }
+    .analytics {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .badges img {
+            margin-top: 35px;
+        }
+
+        .card-body,
+        .card {
+            background-color: #1b232c;
+            border-radius: 5%;
+        }
   </style>
 </head>
 
@@ -101,7 +116,102 @@
     <p>{{ error }}</p>
     {% endif %}
   </div>
+  <div class="grey-bg container-fluid">
+    {% for product in products %}
+    <section id="minimal-statistics">
+        <div class="row">
+            <div class="col-12 mt-3 mb-1">
 
+                <h4 class="text-uppercase mb-2 "><a class="text-white text-decoration-none"
+                        > {{
+                        product['product_name']}} </a></h4>
+
+
+                <div class="my-2">
+                    <a download class="btn btn-primary" href="database/{{product['id']}}.json">Download</a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="danger"> {{ product['total_advantages'] }}</h3>
+                                    <span class="text-light">Number Of Cons</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-dislike danger font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="success">{{ product['total_disadvantages'] }}</h3>
+                                    <span class="text-light">Number Of Props</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-like success font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="warning">{{ product['total_product_reviews'] }}</h3>
+                                    <span class="text-light">Number Of Opinions</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="primary">{{ product['average_score'] }}</h3>
+                                    <span class="text-light">Average score</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-star primary font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {% endfor %}
+</div>
+  
 </div>
 </body>
 
