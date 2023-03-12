@@ -77,4 +77,4 @@ class Product:
                                  "average_score": product_stats["average_score"]})
             return products
         else:
-            return {"Error": "No products"}
+            return products

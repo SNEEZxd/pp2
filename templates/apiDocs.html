@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API Documentation</title>
+</head>
+<body>
+	<header>
+		<h1>API Documentation</h1>
+	</header>
+	<table>
+		<thead>
+			<tr>
+				<th>Endpoint</th>
+				<th>HTTP Method</th>
+				<th>Parameters</th>
+				<th>Request Body</th>
+				<th>Response</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>/api/users</td>
+				<td>GET</td>
+				<td>None</td>
+				<td>None</td>
+				<td>Returns a list of all users</td>
+			</tr>
+			<tr>
+				<td>/api/users/:id</td>
+				<td>GET</td>
+				<td>User ID</td>
+				<td>None</td>
+				<td>Returns a single user object</td>
+			</tr>
+			<tr>
+				<td>/api/users</td>
+				<td>POST</td>
+				<td>User data</td>
+				<td>User data in JSON format</td>
+				<td>Returns the newly created user object</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2>Example Request:</h2>
+	<pre>
+	<code>
+GET /api/users HTTP/1.1
+Host: example.com
+Content-Type: application/json
+	</code>
+	</pre>
+	<h2>Example Response:</h2>
+	<pre>
+	<code>
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[{
+	"id": 1,
+	"name": "John",
+	"email": "john@example.com"
+},
+{
+	"id": 2,
+	"name": "Jane",
+	"email": "jane@example.com"
+}]
+	</code>
+	</pre>
+</body>
+</html>

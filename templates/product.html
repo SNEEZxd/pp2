@@ -23,10 +23,10 @@
     body {
         margin: 0;
         padding: 0;
-        background-color: rgba(13,17,23,255);
+        background-color: #09131b;
     }
     p ,h1, h2, h3, h4, h5, h6 {
-        color: #404258;
+        color: #f0f4f7;
     }
 
     
@@ -36,7 +36,7 @@
     }
 
     td {
-      background-color: rgba(22, 27, 34, 255) !important;
+      background-color: #09131b !important;
       color: #eaebf1!important;
     }
 
@@ -79,10 +79,10 @@
           <a href="/about" class="nav-link">About Me</a>
         </li>
         <li class="nav-item">
-          <a href="/product" class="nav-link active">Ekstract Opinions</a>
+          <a href="/product" class="nav-link active">Product</a>
         </li>
         <li class="nav-item">
-          <a href="product-list" class="nav-link ">Products List</a>
+          <a href="/products" class="nav-link ">Products</a>
         </li>
       </ul>
     </header>
@@ -91,12 +91,11 @@
 
   <div id="navupper">    
     <header id="navupperInside">
-      <img src="{{product_data.product_image}}" alt="{{product_data.product_name}}",width='100px', height='100px'>
-      <h3>{{product_data.product_name}}</h3>
+      <h3 style="margin-left: 80px; font-weight: 500;">{{product_data.product_name}}</h3>
     </header>
   </div>
   
-    <table>
+    <table style="margin-left: 80px; font-weight: 500;">
       <tr>
         <th>Product ID:</th>
         <td>{{product_data.product_id}}</td>

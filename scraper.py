@@ -12,19 +12,12 @@ class CeneoScraper:
         
     def check_product_id(self, product_id):
         self.product_id = product_id
-        # dir_files = os.listdir('database')
-        # if product_id in str(dir_files):
-        #     for file in dir_files:
-        #         if file == f'{product_id}.json':
-        #             with open('database/' + file, encoding='utf-8') as f:
-        #                 data = json.load(f)
-        #             return data
-        # else:
         response = requests.get("https://www.ceneo.pl/" + self.product_id)
         if response.status_code != 200:
             return False 
         else:
             return True
+        
     def check_database(self,product_id):
         dir_files = os.listdir('database')
         
@@ -37,6 +30,7 @@ class CeneoScraper:
             return {}
         else:       
             return {}      
+        
     def get_product_data(self):
         response = requests.get("https://www.ceneo.pl/" + self.product_id + "#tab=reviews")
         soup = BeautifulSoup(response.text, 'lxml')

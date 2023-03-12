@@ -1,6 +1,6 @@
 from flask import Flask, render_template,redirect,request
 from scraper import CeneoScraper
-
+from product import Product
 ceneo_craper = CeneoScraper()
 app = Flask(__name__)
 
@@ -33,11 +33,16 @@ def product():
             else:
                 return render_template('getProduct.html',error = "Product does not exist")
         
-@app.route('/products', methods=['GET','POST'])
+@app.route('/products', methods=['GET'])
 def products():
     if request.method == 'GET':
-        return render_template('products.html')
-
+        product = Product('')
+        products = product.get_scrapped_products()
+        if products == []:
+            return render_template('products.html',error = "First scrap some products!")
+        else:
+            return render_template('products.html',products = products)
+            
 @app.route('/product/charts/', methods=['GET','POST'])
 def charts():
     if request.method == 'GET':
