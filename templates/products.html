@@ -122,13 +122,11 @@
         <div class="row">
             <div class="col-12 mt-3 mb-1">
 
-                <h4 class="text-uppercase mb-2 "><a class="text-white text-decoration-none"
-                        > {{
-                        product['product_name']}} </a></h4>
+                <h4 class="text-uppercase mb-2 "><a class="text-white text-decoration-none"> {{product['product_name']}} </a></h4>
 
 
                 <div class="my-2">
-                    <a download class="btn btn-primary" href="database/{{product['id']}}.json">Download</a>
+                    <a download class="btn btn-primary" href="{{ url_for('static', filename=product['product_id']+'.json') }}">Download</a>
 
                 </div>
             </div>
@@ -142,8 +140,8 @@
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="danger"> {{ product['total_advantages'] }}</h3>
-                                    <span class="text-light">Number Of Cons</span>
+                                    <h3 class="danger"> {{ product['average_score'] }}</h3>
+                                    <span class="text-light">Average score</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="icon-dislike danger font-large-2 float-right"></i>
@@ -159,8 +157,8 @@
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="success">{{ product['total_disadvantages'] }}</h3>
-                                    <span class="text-light">Number Of Props</span>
+                                    <h3 class="success">{{ product['total_product_reviews'] }}</h3>
+                                    <span class="text-light">Number of reviews</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="icon-like success font-large-2 float-right"></i>
@@ -177,8 +175,8 @@
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="warning">{{ product['total_product_reviews'] }}</h3>
-                                    <span class="text-light">Number Of Opinions</span>
+                                    <h3 class="warning">{{ product['total_advantages'] }}</h3>
+                                    <span class="text-light">Number of pros</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="icon-pie-chart warning font-large-2 float-right"></i>
@@ -194,8 +192,8 @@
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="primary">{{ product['average_score'] }}</h3>
-                                    <span class="text-light">Average score</span>
+                                    <h3 class="primary">{{ product['total_disadvantages'] }}</h3>
+                                    <span class="text-light">Number of cons</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="icon-star primary font-large-2 float-right"></i>

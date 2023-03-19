@@ -19,12 +19,12 @@ class CeneoScraper:
             return True
         
     def check_database(self,product_id):
-        dir_files = os.listdir('database')
+        dir_files = os.listdir('static')
         
         if len(dir_files) > 0:
             for file in dir_files:
                 if product_id in str(file):
-                    with open('database/' + file, encoding='utf-8') as f:
+                    with open('static/' + file, encoding='utf-8') as f:
                         data = json.load(f)
                     return data
             return {}

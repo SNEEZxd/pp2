@@ -9,7 +9,7 @@ class Product:
         self.reviews = []
         
     def save_to_json(self):
-        with open(f'database/{self.product_id}.json', "w", encoding='utf-8') as f:
+        with open(f'static/{self.product_id}.json', "w", encoding='utf-8') as f:
             json.dump(self.product_data, f, indent=4, ensure_ascii=False)
         return self.product_data
     
@@ -59,11 +59,11 @@ class Product:
     @staticmethod
     def get_scrapped_products():
         products = []
-        dir_files = os.listdir('database')
+        dir_files = os.listdir('static')
         
         if len(dir_files) > 0:
             for file in dir_files:
-                with open('database/' + file, encoding='utf-8') as f:
+                with open('static/' + file, encoding='utf-8') as f:
                     data = json.load(f)
                     
                 product_stats =  Product.product_stats(data)

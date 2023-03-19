@@ -1,0 +1,20 @@
+{
+    "product_id": "12331231",
+    "product_name": "Duravit 07814510",
+    "product_image": "https://image.ceneostatic.pl/data/products/12331231/i-duravit-07814510.jpg",
+    "product_reviews_count": 1,
+    "reviews": [
+        {
+            "user": "Użytkownik Ceneo",
+            "review_date": "2019-03-06 00:00:00",
+            "review_score": 4.5,
+            "review_text": "4,5/5",
+            "vote_up_count": "0",
+            "vote_down_count": "0",
+            "purchase_date": "2019-03-06 00:00:00",
+            "advantages_count": 0,
+            "disadvantages_count": 0,
+            "is_recommend": false
+        }
+    ]
+}
