@@ -35,19 +35,21 @@ class Product:
         total_disadvantages = 0
         total_recommend = 0
         total_not_recommend = 0
-        product_rating = {0.5: 0 , 1.0: 0, 1.5: 0, 2.0: 0, 2.5: 0, 3.0: 0, 3.5: 0, 4.0: 0, 4.5: 0, 5.0: 0}
+        total_reviews = 0
+        product_rating = {"0.5": 0 , "1.0": 0, "1.5": 0, "2.0": 0, "2.5": 0, "3.0": 0, "3.5": 0, "4.0": 0, "4.5": 0, "5.0": 0}
 
         for review in file["reviews"]:
             total_advantages += review["advantages_count"]
             total_disadvantages += review["disadvantages_count"]
             average_score += review["review_score"]
+            total_reviews += 1 
             if review["is_recommend"]:
                 total_recommend += 1
             else:
                 total_not_recommend += 1
                 
-            product_rating[review["review_score"]] += 1 
-            
+            product_rating[str(review["review_score"])] += 1 
+        product_stats["total_reviews"] = total_reviews
         product_stats["product_rating"] = product_rating
         product_stats["total_recommend"] = total_recommend
         product_stats["total_not_recommend"] = total_not_recommend
@@ -74,7 +76,8 @@ class Product:
                                  "total_product_reviews": data["product_reviews_count"],
                                  "total_advantages": product_stats["total_advantages"],
                                  "total_disadvantages": product_stats["total_disadvantages"],
-                                 "average_score": product_stats["average_score"]})
+                                 "average_score": product_stats["average_score"]}
+                                )
             return products
         else:
             return products

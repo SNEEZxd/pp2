@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,url_for, make_response, send_file
 from scraper import CeneoScraper
 from product import Product
+import json
 ceneo_craper = CeneoScraper()
 app = Flask(__name__)
 
@@ -45,21 +46,19 @@ def products():
             
 @app.route('/product/charts/', methods=['GET','POST'])
 def charts():
+    
     if request.method == 'GET':
         return render_template('products.html')
-
-@app.route('/download_file/<file_id>')
-def download_json(file_id):
-    with open('static'+file_id+'.json') as f:
-        json_data = f.read()
-
-    response = make_response(json_data)
-
-    response.headers.set('Content-Disposition', 'attachment', filename=file_id+'.json')
-    response.headers.set('Content-Type', 'application/json')
-
-    return response
-
+    else:
+        request.method == 'POST'
+        product_id = request.form["product_id"]
+        product = Product('')
+        with open('static/' + product_id + '.json', encoding='utf-8') as f:
+            data = json.load(f)
+        product_data = str(product.product_stats(data)).replace("'",'"')
+        
+        return render_template('charts.html',product_data = product_data)
+    
 if __name__ == '__main__':
     app.run(debug=True)
     
